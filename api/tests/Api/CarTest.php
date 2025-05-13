@@ -4,13 +4,13 @@ namespace App\Tests\Api;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 
-class GreetingsTest extends ApiTestCase
+class CarTest extends ApiTestCase
 {
-    public function testCreateGreeting(): void
+    public function testCreateCar(): void
     {
-        static::createClient()->request('POST', '/greetings', [
+        static::createClient()->request('POST', '/cars', [
             'json' => [
-                'name' => 'Kévin',
+                'name' => 'Ferrari',
             ],
             'headers' => [
                 'Content-Type' => 'application/ld+json',
@@ -19,9 +19,9 @@ class GreetingsTest extends ApiTestCase
 
         $this->assertResponseStatusCodeSame(201);
         $this->assertJsonContains([
-            '@context' => '/contexts/Greeting',
-            '@type' => 'Greeting',
-            'name' => 'Kévin',
+            '@context' => '/contexts/Car',
+            '@type' => 'Car',
+            'name' => 'Ferrari',
         ]);
     }
 }
